@@ -1,0 +1,50 @@
+<html>
+
+<head>
+    <title>Light Bulb On/Off With Sound</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" async></script>
+</head>
+
+<body>
+    <a  class="btn-shine" target="_blank">Practical 2 - deploying a NodeJS-based application on the local server
+    </a>
+    <div class="light">
+        <div class="wire"></div>
+        <div class="bulb">
+            <span></span>
+            <span></span>
+        </div>
+        
+        <div class="switch">
+            <div class="power-switch">
+                <input type="checkbox" />
+                <div class="button">
+                  <svg class="power-off">
+                    <use xlink:href="#line" class="line" />
+                    <use xlink:href="#circle" class="circle" />
+                  </svg>
+                  <svg class="power-on">
+                    <use xlink:href="#line" class="line" />
+                    <use xlink:href="#circle" class="circle" />
+                  </svg>
+                </div>
+              </div>
+              
+              <!-- SVG -->
+              <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150" id="line">
+                  <line x1="75" y1="34" x2="75" y2="58"/>
+                </symbol>
+                <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150" id="circle">
+                  <circle cx="75" cy="80" r="35"/>
+                </symbol>
+              </svg>
+            <div class="btn"></div>
+        </div>
+    </div>
+    
+</body>
+
+</html>
+
