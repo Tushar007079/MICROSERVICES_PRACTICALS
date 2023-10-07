@@ -103,4 +103,6 @@ app.get('/getAllCustomers', (req, res) => {
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
+  console.log(`Server is running on http://localhost:${port}`);
+
 });
