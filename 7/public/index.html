@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add a New Customer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Style for the "Show All Customers" button */
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 3px;
+            display: block;
+            margin: 20px auto;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Style for customer list container */
+        #customerList {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #ccc;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Add a New Customer</h2>
+<form action="/addCustomer" method="POST">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="phone_no">Phone Number:</label><br>
+    <input type="text" id="phone_no" name="phone_no" required><br><br>
+
+    <label for="order_id">Order ID:</label><br>
+    <input type="text" id="order_id" name="order_id" required><br><br>
+
+    <input type="submit" value="Add Customer">
+</form>
+<!-- Add a button to show all customers -->
+<button onclick="showAllCustomers()">Show All Customers</button>
+
+<!-- Add a container to display the customer data -->
+<div id="customerList"></div>
+
+<!-- Include JavaScript to handle the button click -->
+<script>
+    function showAllCustomers() {
+        // Use JavaScript to make an AJAX request to fetch and display all customers
+        fetch('/getAllCustomers')
+            .then((response) => response.json())
+            .then((data) => {
+                const customerList = document.getElementById('customerList');
+                customerList.innerHTML = '<h2>All Customers</h2>';
+                data.forEach((customer) => {
+                    customerList.innerHTML += `
+                        <p>Name: ${customer.name}</p>
+                        <p>Phone Number: ${customer.phone_no}</p>
+                        <p>Order ID: ${customer.order_id}</p>
+                        <hr>
+                    `;
+                });
+            });
+    }
+</script>
+</body>
+</html>
